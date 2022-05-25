@@ -2,7 +2,7 @@ import {makeStyles} from "@material-ui/core/styles";
 
 export const loginSignupStyles = makeStyles((theme) => ({
     root: {
-        position: 'relative',
+        // position: 'relative',
         width: '1024px',
         height: '700px',
         background: '#FFFFFF'
@@ -68,6 +68,7 @@ export const loginSignupStyles = makeStyles((theme) => ({
         position: 'absolute',
         width: '351px',
         height: '54px',
+        left:'631px',
         top: '30px'
     },
     createAccountText:{
@@ -96,7 +97,7 @@ export const loginSignupStyles = makeStyles((theme) => ({
         boxShadow: '0px 4px 4px rgba(88, 133, 196, 0.15)',
     },
     createAccountButtonText:{
-        position: 'absolute',
+        // position: 'absolute',
         height: '19px',
         left: '20%',
         right: '19.41%',
@@ -179,8 +180,9 @@ export const loginSignupStyles = makeStyles((theme) => ({
         right: '0%',
         top: '96.97%',
         bottom: '0%',
+        width:'380px'
 
-        background: '#3A8DFF',
+        // background: '#3A8DFF',
     },
 
     formLoginPassRoot:{
@@ -213,8 +215,7 @@ export const loginSignupStyles = makeStyles((theme) => ({
         right: '0%',
         top: '98.46%',
         bottom: '0%',
-
-        background: '#D5DFEE',
+        width:'380px'
     },
     formLoginPassForgotText:{
         position: 'absolute',
