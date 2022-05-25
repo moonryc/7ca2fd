@@ -80,15 +80,16 @@ const Home = ({ user, logout }) => {
 
   const addNewConvo = useCallback(
       (recipientId, message) => {
-        const tempConversations = [...conversations]
-        tempConversations.forEach((convo) => {
-          if (convo.otherUser.id === recipientId) {
-            convo.messages.push(message);
-            convo.latestMessageText = message.text;
-            convo.id = message.conversationId;
-          }
+        setConversations(prevState => {
+          return prevState.map((convo) => {
+            if (convo.otherUser.id === recipientId) {
+              convo.messages.push(message);
+              convo.latestMessageText = message.text;
+              convo.id = message.conversationId;
+            }
+            return convo
+          });
         });
-        setConversations(tempConversations);
       },
       [setConversations, conversations],
   );
@@ -106,14 +107,15 @@ const Home = ({ user, logout }) => {
           setConversations((prev) => [newConvo, ...prev]);
         }
 
-        const tempConversation = [...conversations]
-        tempConversation.forEach((convo) => {
-          if (convo.id === message.conversationId) {
-            convo.messages.push(message);
-            convo.latestMessageText = message.text;
-          }
+        setConversations(prevState => {
+          return prevState.map((convo) => {
+            if (convo.id === message.conversationId) {
+              convo.messages.push(message);
+              convo.latestMessageText = message.text;
+            }
+            return convo
+          });
         });
-        setConversations(tempConversation);
       },
       [setConversations, conversations],
   );
