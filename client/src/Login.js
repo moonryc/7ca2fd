@@ -45,26 +45,26 @@ const LoginForm = (props) => {
     return (
         <Box component={'form'} onSubmit={handleLogin} className={classes.formLoginRoot}>
             <Typography className={classes.formLoginText}>Welcome back!</Typography>
-            <Box className={classes.formLoginUsernameRoot}>
+
                 <Typography className={classes.formLoginUsernameText}>Username</Typography>
                 <FormControl required>
                     <TextField className={classes.formLoginUsernameInput} hiddenLabel aria-label={'username'}
                                label={'username'} name={'username'} type={'text'}/>
                 </FormControl>
-            </Box>
-            <Box className={classes.formLoginPassRoot}>
-                <Typography className={classes.formLoginPassText}>Password</Typography>
-                <FormControl required>
-                    <TextField className={classes.formLoginPassInput} hiddenLabel aria-label={'password'}
-                               label={'password'} name={'password'} type={'password'}/>
-                    <Typography className={classes.formLoginPassForgotText}>Forgot?</Typography>
-                </FormControl>
-            </Box>
-            <Box className={classes.formLoginButtonRoot}>
-                <Button className={classes.formLoginButtonBtn} variant={'contained'} type={'submit'}>
-                    <Typography className={classes.formLoginButtonText}>Login</Typography>
-                </Button>
-            </Box>
+
+            {/*<Box className={classes.formLoginPassRoot}>*/}
+            {/*    <Typography className={classes.formLoginPassText}>Password</Typography>*/}
+            {/*    <FormControl required>*/}
+            {/*        <TextField className={classes.formLoginPassInput} hiddenLabel aria-label={'password'}*/}
+            {/*                   label={'password'} name={'password'} type={'password'}/>*/}
+            {/*        <Typography className={classes.formLoginPassForgotText}>Forgot?</Typography>*/}
+            {/*    </FormControl>*/}
+            {/*</Box>*/}
+            {/*<Box className={classes.formLoginButtonRoot}>*/}
+            {/*    <Button className={classes.formLoginButtonBtn} variant={'contained'} type={'submit'}>*/}
+            {/*        <Typography className={classes.formLoginButtonText}>Login</Typography>*/}
+            {/*    </Button>*/}
+            {/*</Box>*/}
         </Box>
     )
 }
@@ -74,8 +74,6 @@ const Login = ({user, login}) => {
     const classes = loginSignupStyles()
     const history = useHistory();
     const isMobile = useMediaQuery((theme) => theme.breakpoints.down('xs'));
-    const isTablet = useMediaQuery((theme) => theme.breakpoints.down('sm'));
-    const isDesktop = useMediaQuery((theme) => theme.breakpoints.down('md'));
 
 
     const handleLogin = async (event) => {
@@ -95,8 +93,8 @@ const Login = ({user, login}) => {
     return (
         <Box className={classes.root}>
             {/*Side Banner*/}
-
             <SideBannerAndBackground isMobile={isMobile}/>
+
 
 
             {/*Create Account*/}
@@ -104,7 +102,9 @@ const Login = ({user, login}) => {
 
 
             {/*Login Form*/}
-            {/*<LoginForm handleLogin={handleLogin} />*/}
+            {/*<LoginForm handleLogin={handleLogin} isMobile={isMobile}/>*/}
+
+
 
 
         </Box>

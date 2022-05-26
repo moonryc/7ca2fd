@@ -41,7 +41,9 @@ export const loginSignupStyles = makeStyles((theme) => ({
         /* or 154% */
         textAlign: 'center',
         color: '#FFFFFF',
-        zIndex:1
+        zIndex:1,
+        paddingLeft:'20px',
+        paddingRight:'20px'
     },
     sideBannerBg: {
         position: 'absolute',
@@ -62,6 +64,7 @@ export const loginSignupStyles = makeStyles((theme) => ({
     createAccountRoot: {
         display:'flex',
         width:'100%',
+        height:"fit-content",
         flexDirection:props => props.isMobile ? 'column-reverse':'row-reverse',
         marginRight: props => props.isMobile ? '0':'42px',
         marginLeft: props => props.isMobile ? '0':'42px',
@@ -108,18 +111,11 @@ export const loginSignupStyles = makeStyles((theme) => ({
     //#region login form
 
     formLoginRoot:{
-        position: 'absolute',
-        width: '380px',
-        height: '358px',
-        left: '522px',
-        top: '170px',
+        marginTop:props => props.isMobile?'0':'170px',
+        marginLeft:props => props.isMobile?'0':'97px'
     },
     formLoginText:{
-        position: 'absolute',
         height: '40px',
-        left: '0%',
-        right: '50.26%',
-        top: 'calc(50% - 40px/2 - 159px)',
         fontFamily: 'Open Sans',
         fontStyle: 'normal',
         fontWeight: '600',
@@ -131,20 +127,8 @@ export const loginSignupStyles = makeStyles((theme) => ({
 
     //#region username
 
-    formLoginUsernameRoot:{
-        position: 'absolute',
-        left: '0%',
-        right: '0%',
-        top: '20.39%',
-        bottom: '61.17%',
-    },
     formLoginUsernameText:{
-        position: 'absolute',
-        height: '19px',
-        left: '1.32%',
-        right: '73.42%',
         top: 'calc(50% - 19px/2 - 23.5px)',
-
         fontFamily: 'Open Sans',
         fontStyle: 'normal',
         fontWeight: '400',
@@ -156,11 +140,6 @@ export const loginSignupStyles = makeStyles((theme) => ({
         color: '#B0B0B0',
     },
     formLoginUsernameInput:{
-        position: 'absolute',
-        left: '0%',
-        right: '0%',
-        top: '96.97%',
-        bottom: '0%',
         width:'380px'
 
         // background: '#3A8DFF',
