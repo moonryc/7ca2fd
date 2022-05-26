@@ -3,6 +3,7 @@ import {makeStyles} from "@material-ui/core/styles";
 export const loginSignupStyles = makeStyles((theme) => ({
     root: {
         position: 'relative',
+        display:'flex',
         width: '100vw',
         height: '100vh',
         background: '#FFFFFF'
@@ -59,18 +60,16 @@ export const loginSignupStyles = makeStyles((theme) => ({
     //#region createAccount
 
     createAccountRoot: {
-        position: 'absolute',
-        width: '351px',
-        height: '54px',
-        left:'631px',
-        top: '30px'
+        display:'flex',
+        width:'100%',
+        flexDirection:props => props.isMobile ? 'column-reverse':'row-reverse',
+        marginRight: props => props.isMobile ? '0':'42px',
+        marginLeft: props => props.isMobile ? '0':'42px',
     },
     createAccountText:{
-        position: 'absolute',
+        marginTop: props => props.isMobile ? '0':'46px',
+        marginRight:props => props.isMobile? '0':'30px',
         height: '19px',
-        left: '0%',
-        right: '56.98%',
-        top: 'calc(50% - 19px/2 - 1.18px)',
         fontFamily: 'Open Sans',
         fontStyle: 'normal',
         fontWeight: '400',
@@ -80,41 +79,25 @@ export const loginSignupStyles = makeStyles((theme) => ({
         textAlign: 'center',
         color: '#B0B0B0',
     },
-    createAccountButtonRoot:{
-        position: 'absolute',
-        left: '51.57%',
-        right: '0%',
-        top: '0%',
-        bottom: '0%',
 
-        background: '#FFFFFF',
-        boxShadow: '0px 4px 4px rgba(88, 133, 196, 0.15)',
+    createAccountLink:{
+        height:'fit-content'
     },
     createAccountButtonText:{
-        // position: 'absolute',
         height: '19px',
-        left: '20%',
-        right: '19.41%',
-        top: 'calc(50% - 19px/2 - 1.5px)',
-
         fontFamily: 'Open Sans',
         fontStyle: 'normal',
         fontWeight: '600',
         fontSize: '14px',
         lineHeight: '19px',
         /* identical to box height */
-
         textAlign: 'center',
-
         color: '#3A8DFF',
     },
     createAccountButtonBtn:{
-        position: 'absolute',
-        left: '0%',
-        right: '0%',
-        top: '0%',
-        bottom: '0%',
-
+        marginTop: props => props.isMobile ? '0':'30px',
+        width:'170px',
+        height:'54px',
         background: '#FFFFFF',
         boxShadow: '0px 2px 12px rgba(74, 106, 149, 0.2)',
         borderRadius: '5px',
