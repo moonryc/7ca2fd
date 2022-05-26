@@ -2,38 +2,36 @@ import {makeStyles} from "@material-ui/core/styles";
 
 export const loginSignupStyles = makeStyles((theme) => ({
     root: {
-        // position: 'relative',
-        width: '1024px',
-        height: '700px',
+        position: 'relative',
+        width: '100vw',
+        height: '100vh',
         background: '#FFFFFF'
     },
+
+    //#region sideBanner
+
     sideBannerRoot: {
-        position: 'absolute',
-        width: '425px',
-        height: '700px',
-        left: '0px',
-        top: '0px'
+        maxWidth:props => props.isMobile ? '100%':'33.33%',
+        width: props => props.isMobile ? '100%':'100%',
+        height:props => props.isMobile ? '100vh':'100%',
+        backgroundSize:'cover',
+        backgroundImage: `url(${process.env.PUBLIC_URL}/assets/bg-img.png)`
     },
     sideBannerTextRoot: {
-        position: 'absolute',
-        width: '269px',
-        height: '186px',
-        left: '77.71px',
-        top: '199px'
+        display:'flex',
+        flexDirection:'column',
+        justifyContent: props=>props.isMobile? 'center': 'center',
+        alignItems:'center',
+        width: props => props.isMobile ? '100vw':'auto',
+        height:props => props.isMobile ? '100vh':'100vh',
     },
     sideBannerTextChat: {
-        position: 'absolute',
         width: '67px',
         height: '67px',
-        left: '101.67px',
-        top: '0px'
+        zIndex:1
     },
     sideBannerText:{
-        position: 'absolute',
         height: '80px',
-        left: '0%',
-        right: '0%',
-        top: 'calc(50% - 80px/2 + 53px)',
         fontFamily: 'Open Sans',
         fontStyle: 'normal',
         fontWeight: '400',
@@ -42,27 +40,23 @@ export const loginSignupStyles = makeStyles((theme) => ({
         /* or 154% */
         textAlign: 'center',
         color: '#FFFFFF',
+        zIndex:1
     },
     sideBannerBg: {
         position: 'absolute',
-        width: '425px',
-        height: '700px',
+        maxWidth:props => props.isMobile ? '100%':'33.33%',
+        width: props => props.isMobile ? '100%':'100%',
+        height:props => props.isMobile ? '100vh':'100%',
         left: '0px',
         top: '0px',
         background: 'linear-gradient(180deg, #3A8DFF 0%, #86B9FF 100%)',
         mixBlendMode: 'normal',
         opacity: '0.85'
     },
-    sideBannerBgImg: {
-        position:'absolute',
-        width:'425px',
-        height:'700px',
-        left:'0px',
-        top:'0px',
-        background: `url(${process.env.PUBLIC_URL}/assets/bg-img.png)`
-    },
 
+    //#endregion
 
+    //#region createAccount
 
     createAccountRoot: {
         position: 'absolute',
@@ -126,7 +120,9 @@ export const loginSignupStyles = makeStyles((theme) => ({
         borderRadius: '5px',
     },
 
+    //#endregion
 
+    //#region login form
 
     formLoginRoot:{
         position: 'absolute',
@@ -149,6 +145,8 @@ export const loginSignupStyles = makeStyles((theme) => ({
         /* identical to box height, or 154% */
         color: '#000000',
     },
+
+    //#region username
 
     formLoginUsernameRoot:{
         position: 'absolute',
@@ -184,6 +182,10 @@ export const loginSignupStyles = makeStyles((theme) => ({
 
         // background: '#3A8DFF',
     },
+
+    //#endregion
+
+    //region password
 
     formLoginPassRoot:{
         position: 'absolute',
@@ -234,6 +236,10 @@ export const loginSignupStyles = makeStyles((theme) => ({
         color: '#3A8DFF',
     },
 
+    //#endregion
+
+    //#region formButton
+
     formLoginButtonRoot:{
         position: 'absolute',
         left: '28.95%',
@@ -271,5 +277,9 @@ export const loginSignupStyles = makeStyles((theme) => ({
         background: '#3A8DFF',
         borderRadius: '3px',
     }
+
+    //#endregion
+
+    //#endregion
 
 }))

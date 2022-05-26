@@ -6,21 +6,28 @@ import {
     Typography,
     Button,
     FormControl,
-    TextField,
+    TextField, useMediaQuery,
 } from '@material-ui/core';
 import {loginSignupStyles} from "./GlobalStyles";
 
 
-const SideBannerAndBackground = ()=>{
-    const classes = loginSignupStyles()
+const SideBannerAndBackground = (props)=>{
+    const classes = loginSignupStyles(props)
+
+    useEffect(() => {
+        console.log(`isMobile : ${props.isMobile}`)
+    }, [props.isMobile]);
+
+
     return(
         <Box className={classes.sideBannerRoot}>
-            <Box className={classes.sideBannerBgImg}/>
+            {/*<Box className={classes.sideBannerBgImg}/>*/}
             <Box className={classes.sideBannerBg}/>
             <Box className={classes.sideBannerTextRoot}>
                 <img alt={''} className={classes.sideBannerTextChat} src={`${process.env.PUBLIC_URL}/assets/bubble.svg`}/>
                 <Typography className={classes.sideBannerText}>Converse with anyone with any language</Typography>
             </Box>
+
         </Box>
     )
 }
@@ -70,6 +77,9 @@ const LoginForm = ({handleLogin}) => {
 const Login = ({ user, login }) => {
   const classes = loginSignupStyles()
   const history = useHistory();
+    const isMobile = useMediaQuery((theme)=>theme.breakpoints.down('xs'));
+    const isTablet = useMediaQuery((theme)=>theme.breakpoints.down('sm'));
+    const isDesktop = useMediaQuery((theme)=>theme.breakpoints.down('md'));
 
 
 
@@ -90,23 +100,25 @@ const Login = ({ user, login }) => {
     return (
         <Box className={classes.root}>
             {/*Side Banner*/}
-            <Grid item xs={1}>
-                <SideBannerAndBackground/>
-            </Grid>
+            {/*{isMobile && !isTablet  && <SideBannerAndBackground isMobile={isMobile}/>}*/}
+
+            <SideBannerAndBackground isMobile={isMobile}/>
+
+            {/*{isTablet && <>*/}
+            {/*    <Grid item xs={1} md={5}><SideBannerAndBackground/></Grid>*/}
+            {/*    /!*The Rest*!/*/}
+            {/*    <Grid container item xs={11}>*/}
+            {/*        /!*Create Account*!/*/}
+            {/*        <CreateAccount/>*/}
+            {/*        /!*Login Form*!/*/}
+            {/*        <LoginForm handleLogin={handleLogin} />*/}
+            {/*    </Grid>*/}
+            {/*</>*/}
+            {/*}*/}
 
 
-            {/*The Rest*/}
-            <Grid container item xs={11}>
-
-                {/*Create Account*/}
-                <CreateAccount/>
-
-                {/*Login Form*/}
-                <LoginForm handleLogin={handleLogin} />
 
 
-
-            </Grid>
         </Box>
 
     );
