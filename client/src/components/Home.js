@@ -83,9 +83,12 @@ const Home = ({ user, logout }) => {
         setConversations(prevState => {
           return prevState.map((convo) => {
             if (convo.otherUser.id === recipientId) {
-              convo.messages.push(message);
-              convo.latestMessageText = message.text;
-              convo.id = message.conversationId;
+              return {
+                ...convo,
+                messages:[...convo.messages, message],
+                latestMessageText: message.text,
+                id: message.conversationId
+              }
             }
             return convo
           });
@@ -110,8 +113,11 @@ const Home = ({ user, logout }) => {
         setConversations(prevState => {
           return prevState.map((convo) => {
             if (convo.id === message.conversationId) {
-              convo.messages.push(message);
-              convo.latestMessageText = message.text;
+              return {
+                ...convo,
+                messages:[...convo.messages,message],
+                latestMessageText: message.text
+              }
             }
             return convo
           });
