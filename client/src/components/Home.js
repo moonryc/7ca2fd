@@ -62,9 +62,9 @@ const Home = ({ user, logout }) => {
     });
   };
 
-  const postMessage = (body) => {
+  const postMessage = async (body) => {
     try {
-      const data = saveMessage(body);
+      const data = await saveMessage(body);
 
       if (!body.conversationId) {
         addNewConvo(body.recipientId, data.message);
@@ -79,41 +79,51 @@ const Home = ({ user, logout }) => {
   };
 
   const addNewConvo = useCallback(
-    (recipientId, message) => {
-      conversations.forEach((convo) => {
-        if (convo.otherUser.id === recipientId) {
-          convo.messages.push(message);
-          convo.latestMessageText = message.text;
-          convo.id = message.conversationId;
-        }
-      });
-      setConversations(conversations);
-    },
-    [setConversations, conversations],
+      (recipientId, message) => {
+        setConversations(prevState => {
+          return prevState.map((convo) => {
+            if (convo.otherUser.id === recipientId) {
+              return {
+                ...convo,
+                messages:[...convo.messages, message],
+                latestMessageText: message.text,
+                id: message.conversationId
+              }
+            }
+            return convo
+          });
+        });
+      },
+      [setConversations],
   );
   const addMessageToConversation = useCallback(
-    (data) => {
-      // if sender isn't null, that means the message needs to be put in a brand new convo
-      const { message, sender = null } = data;
-      if (sender !== null) {
-        const newConvo = {
-          id: message.conversationId,
-          otherUser: sender,
-          messages: [message],
-        };
-        newConvo.latestMessageText = message.text;
-        setConversations((prev) => [newConvo, ...prev]);
-      }
-
-      conversations.forEach((convo) => {
-        if (convo.id === message.conversationId) {
-          convo.messages.push(message);
-          convo.latestMessageText = message.text;
+      (data) => {
+        // if sender isn't null, that means the message needs to be put in a brand new convo
+        const { message, sender = null } = data;
+        if (sender !== null) {
+          const newConvo = {
+            id: message.conversationId,
+            otherUser: sender,
+            messages: [message],
+          };
+          newConvo.latestMessageText = message.text;
+          setConversations((prev) => [newConvo, ...prev]);
         }
-      });
-      setConversations(conversations);
-    },
-    [setConversations, conversations],
+
+        setConversations(prevState => {
+          return prevState.map((convo) => {
+            if (convo.id === message.conversationId) {
+              return {
+                ...convo,
+                messages:[...convo.messages,message],
+                latestMessageText: message.text
+              }
+            }
+            return convo
+          });
+        });
+      },
+      [setConversations],
   );
 
   const setActiveChat = (username) => {
@@ -182,6 +192,7 @@ const Home = ({ user, logout }) => {
     const fetchConversations = async () => {
       try {
         const { data } = await axios.get("/api/conversations");
+        data.forEach((convo)=>convo.messages.reverse())
         setConversations(data);
       } catch (error) {
         console.error(error);
