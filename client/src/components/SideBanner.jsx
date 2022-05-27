@@ -4,6 +4,7 @@ import LoginForm from "./LoginForm";
 import {loginSignupStyles} from "../GlobalStyles";
 import LoginSignupNav from "./LoginSignupNav";
 import {useLocation} from "react-router-dom";
+import SignupForm from "./SignupForm";
 
 const SideBanner = (props) => {
     const {handleLogin, isMobile} = props
@@ -27,8 +28,9 @@ const SideBanner = (props) => {
                      src={`${process.env.PUBLIC_URL}/assets/bubble.svg`}/>
                 {!isMobile && <Typography className={classes.sideBannerText}>Converse with anyone with any language</Typography>}
                 {isMobile && <>
-                    <LoginForm handleLogin={handleLogin} isMobile={isMobile}/>
-                    {isLogin ? <LoginSignupNav isMobile={isMobile}/>: <LoginSignupNav isMobile={isMobile}/>}
+
+                    {isLogin ? <LoginForm handleLogin={handleLogin} isMobile={isMobile}/>:<SignupForm /> }
+                    <LoginSignupNav isMobile={isMobile}/>
                 </>}
             </Box>
         </Box>
