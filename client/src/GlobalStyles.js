@@ -116,9 +116,15 @@ export const loginSignupStyles = makeStyles((theme) => ({
     //#region login form
 
     formLoginRoot:{
+        display:'flex',
+        flexDirection:'column',
+        alignItems:'center',
         marginTop:props => props.isMobile?'0':'170px',
-        marginLeft:props => props.isMobile?'0':'97px',
-        marginRight:props => props.isMobile?'0':'122px',
+        // marginLeft:props => props.isMobile?'0':'97px',
+        // marginRight:props => props.isMobile?'0':'122px',
+    },
+    formLoginContainer:{
+        textAlign:'left'
     },
     formLoginText:{
         height: '40px',
@@ -132,51 +138,34 @@ export const loginSignupStyles = makeStyles((theme) => ({
     },
 
     formInput:{
+        position:'relative',
         width:'100%',
+        minWidth:'380px',
     },
 
-    //#region username
-
-    formLoginUsernameText:{
-        top: 'calc(50% - 19px/2 - 23.5px)',
+    formInputText:{
         fontFamily: 'Open Sans',
         fontStyle: 'normal',
         fontWeight: '400',
         fontSize: '14px',
         lineHeight: '19px',
         /* identical to box height */
-
-
         color: '#B0B0B0',
     },
 
 
-    //#endregion
 
     //region password
-
-    formLoginPassText:{
-            fontFamily: 'Open Sans',
-        fontStyle: 'normal',
-        fontWeight: '400',
-        fontSize: '14px',
-        lineHeight: '19px',
-        /* identical to box height */
-
-
-        color: '#B0B0B0',
-    },
-    formLoginPassInput:{
-        width:'380px'
-    },
     formLoginPassForgotText:{
+        position:'absolute',
+        right:'10px',
+        top:'50%',
         fontFamily: 'Open Sans',
         fontStyle: 'normal',
         fontWeight: '600',
         fontSize: '12px',
         lineHeight: '16px',
         textAlign: 'center',
-
         color: '#3A8DFF',
     },
 
@@ -190,7 +179,6 @@ export const loginSignupStyles = makeStyles((theme) => ({
         right: '28.95%',
         top: '84.36%',
         bottom: '0%',
-
         background: '#FFFFFF',
         boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.35)',
     },

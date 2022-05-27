@@ -30,30 +30,34 @@ const LoginForm = (props) => {
     const classes = loginSignupStyles(props)
     return (
         <Box component={'form'} onSubmit={handleLogin} className={classes.formLoginRoot}>
-            <Typography className={classes.formLoginText}>Welcome back!</Typography>
+            <Box className={classes.formLoginContainer}>
+                <Typography className={classes.formLoginText}>Welcome back!</Typography>
 
-            {/*#region username*/}
-            <Typography className={classes.formLoginUsernameText}>Username</Typography>
-            <FormControl required className={classes.formInput}>
-                <TextField className={classes.formInput} hiddenLabel aria-label={'username'}
-                           label={'username'} name={'username'} type={'text'}/>
-            </FormControl>
-            {/*#endregion*/}
+                {/*#region username*/}
+                <Typography className={classes.formInputText}>Username</Typography>
+                <FormControl required className={classes.formInput}>
+                    <TextField
+                        className={classes.formInput}
+                        aria-label={'username'}
+                        name={'username'} type={'text'}/>
+                </FormControl>
+                {/*#endregion*/}
 
-            {/*region password*/}
-            <Typography className={classes.formLoginPassText}>Password</Typography>
-            <FormControl required className={classes.formInput}>
-                <TextField className={classes.formInput} hiddenLabel aria-label={'password'}
-                           label={'password'} name={'password'} type={'password'}/>
-                <Typography className={classes.formLoginPassForgotText}>Forgot?</Typography>
-            </FormControl>
-            {/*#endregion*/}
+                {/*region password*/}
+                <Typography className={classes.formInputText}>Password</Typography>
+                <FormControl required className={classes.formInput}>
+                    <TextField className={classes.formInput} aria-label={'password'}
+                                name={'password'} type={'password'}/>
+                    <Typography className={classes.formLoginPassForgotText}>Forgot?</Typography>
+                </FormControl>
+                {/*#endregion*/}
 
-            {/*<Box className={classes.formLoginButtonRoot}>*/}
-            {/*    <Button className={classes.formLoginButtonBtn} variant={'contained'} type={'submit'}>*/}
-            {/*        <Typography className={classes.formLoginButtonText}>Login</Typography>*/}
-            {/*    </Button>*/}
-            {/*</Box>*/}
+                {/*<Box className={classes.formLoginButtonRoot}>*/}
+                {/*    <Button className={classes.formLoginButtonBtn} variant={'contained'} type={'submit'}>*/}
+                {/*        <Typography className={classes.formLoginButtonText}>Login</Typography>*/}
+                {/*    </Button>*/}
+                {/*</Box>*/}
+            </Box>
         </Box>
     )
 }
