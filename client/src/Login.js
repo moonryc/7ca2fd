@@ -1,7 +1,6 @@
 import React, {useEffect} from 'react';
 import {Link, useHistory} from 'react-router-dom';
 import {
-    Grid,
     Box,
     Typography,
     Button,
@@ -11,30 +10,17 @@ import {
 import {loginSignupStyles} from "./GlobalStyles";
 
 
-const SideBannerAndBackground = (props) => {
-    const classes = loginSignupStyles(props)
-    return (
-        <Box className={classes.sideBannerRoot}>
-            <Box className={classes.sideBannerBg}/>
-            <Box className={classes.sideBannerTextRoot}>
-                <img alt={''} className={classes.sideBannerTextChat}
-                     src={`${process.env.PUBLIC_URL}/assets/bubble.svg`}/>
-                <Typography className={classes.sideBannerText}>Converse with anyone with any language</Typography>
-            </Box>
-        </Box>
-    )
-}
-
 const CreateAccount = (props) => {
+    const {isMobile} = props
     const classes = loginSignupStyles(props)
     return (
         <Box className={classes.createAccountRoot}>
             <Link className={classes.createAccountLink} to="/register">
-                <Button className={classes.createAccountButtonBtn}>
+                <Button variant={"contained"} className={classes.createAccountButtonBtn}>
                     <Typography className={classes.createAccountButtonText}>Create Account</Typography>
                 </Button>
             </Link>
-            <Typography className={classes.createAccountText}>Don't have an account?</Typography>
+            {!isMobile && <Typography className={classes.createAccountText}>Don't have an account?</Typography>}
         </Box>
     )
 }
@@ -46,20 +32,23 @@ const LoginForm = (props) => {
         <Box component={'form'} onSubmit={handleLogin} className={classes.formLoginRoot}>
             <Typography className={classes.formLoginText}>Welcome back!</Typography>
 
-                <Typography className={classes.formLoginUsernameText}>Username</Typography>
-                <FormControl required>
-                    <TextField className={classes.formLoginUsernameInput} hiddenLabel aria-label={'username'}
-                               label={'username'} name={'username'} type={'text'}/>
-                </FormControl>
+            {/*#region username*/}
+            <Typography className={classes.formLoginUsernameText}>Username</Typography>
+            <FormControl required className={classes.formInput}>
+                <TextField className={classes.formInput} hiddenLabel aria-label={'username'}
+                           label={'username'} name={'username'} type={'text'}/>
+            </FormControl>
+            {/*#endregion*/}
 
-            {/*<Box className={classes.formLoginPassRoot}>*/}
-            {/*    <Typography className={classes.formLoginPassText}>Password</Typography>*/}
-            {/*    <FormControl required>*/}
-            {/*        <TextField className={classes.formLoginPassInput} hiddenLabel aria-label={'password'}*/}
-            {/*                   label={'password'} name={'password'} type={'password'}/>*/}
-            {/*        <Typography className={classes.formLoginPassForgotText}>Forgot?</Typography>*/}
-            {/*    </FormControl>*/}
-            {/*</Box>*/}
+            {/*region password*/}
+            <Typography className={classes.formLoginPassText}>Password</Typography>
+            <FormControl required className={classes.formInput}>
+                <TextField className={classes.formInput} hiddenLabel aria-label={'password'}
+                           label={'password'} name={'password'} type={'password'}/>
+                <Typography className={classes.formLoginPassForgotText}>Forgot?</Typography>
+            </FormControl>
+            {/*#endregion*/}
+
             {/*<Box className={classes.formLoginButtonRoot}>*/}
             {/*    <Button className={classes.formLoginButtonBtn} variant={'contained'} type={'submit'}>*/}
             {/*        <Typography className={classes.formLoginButtonText}>Login</Typography>*/}
@@ -71,10 +60,10 @@ const LoginForm = (props) => {
 
 
 const Login = ({user, login}) => {
-    const classes = loginSignupStyles()
+
     const history = useHistory();
     const isMobile = useMediaQuery((theme) => theme.breakpoints.down('xs'));
-
+    const classes = loginSignupStyles({isMobile})
 
     const handleLogin = async (event) => {
         event.preventDefault();
@@ -92,20 +81,26 @@ const Login = ({user, login}) => {
 
     return (
         <Box className={classes.root}>
-            {/*Side Banner*/}
-            <SideBannerAndBackground isMobile={isMobile}/>
 
+            {/*#region Side Banner*/}
+            <Box className={classes.sideBannerRoot}>
+                <Box className={classes.sideBannerBg}/>
+                <Box className={classes.sideBannerTextRoot}>
+                    <img alt={''} className={classes.sideBannerTextChat}
+                         src={`${process.env.PUBLIC_URL}/assets/bubble.svg`}/>
+                    <Typography className={classes.sideBannerText}>Converse with anyone with any language</Typography>
+                    {isMobile && <CreateAccount isMobile={isMobile}/>}
+                </Box>
+            </Box>
+            {/*#endregion*/}
 
+            <Box sx={{display: 'flex', flexDirection: 'column', width: '-webkit-fill-available'}}>
+                {/*Create Account*/}
+                {!isMobile && <CreateAccount isMobile={isMobile}/>}
 
-            {/*Create Account*/}
-            <CreateAccount isMobile={isMobile}/>
-
-
-            {/*Login Form*/}
-            {/*<LoginForm handleLogin={handleLogin} isMobile={isMobile}/>*/}
-
-
-
+                {/*Login Form*/}
+                <LoginForm handleLogin={handleLogin} isMobile={isMobile}/>
+            </Box>
 
         </Box>
 
