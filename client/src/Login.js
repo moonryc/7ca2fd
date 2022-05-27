@@ -30,15 +30,16 @@ const Login = ({user, login}) => {
     return (
         <Box className={classes.root}>
 
-            {/*#region Side Banner and mobil view*/}
-            <SideBanner handleLogin={handleLogin} isMobile={isMobile}/>
+            {/*#region Side Banner and mobile view*/}
+            <SideBanner isMobile={isMobile}>
+                <LoginForm handleLogin={handleLogin} isMobile={isMobile}/>
+            </SideBanner>
             {/*#endregion*/}
 
             {!isMobile &&
                 <Box sx={{display: 'flex', flexDirection: 'column', width: '-webkit-fill-available'}}>
                     {/*Create Account*/}
                     <LoginSignupNav isMobile={isMobile}/>
-                    {/*<CreateAccount isMobile={isMobile}/>*/}
                     {/*Login Form*/}
                     <LoginForm handleLogin={handleLogin} isMobile={isMobile}/>
                 </Box>
