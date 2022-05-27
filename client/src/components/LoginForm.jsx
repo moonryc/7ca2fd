@@ -1,10 +1,10 @@
 import React from 'react';
 import {loginSignupStyles} from "../GlobalStyles";
 import {Box, Button, FormControl, TextField, Typography} from "@material-ui/core";
+import {Link} from "react-router-dom";
 
-const LoginForm = (props) => {
-    const {handleLogin} = props
-    const classes = loginSignupStyles(props)
+const LoginForm = ({handleLogin, isMobile}) => {
+    const classes = loginSignupStyles({isMobile})
     return (
         <Box component={'form'} onSubmit={handleLogin} className={classes.formLoginRoot}>
             <Box>
@@ -21,7 +21,7 @@ const LoginForm = (props) => {
                 {/*#endregion*/}
 
                 {/*region password*/}
-                <Typography className={[classes.formInputText, classes.formInputTextMarginTop]}>Password</Typography>
+                <Typography className={`${classes.formInputText} ${classes.formInputTextMarginTop}`}>Password</Typography>
                 <FormControl required className={classes.formInput}>
                     <TextField className={classes.formInput} aria-label={'password'}
                                name={'password'} type={'password'}/>
@@ -34,6 +34,13 @@ const LoginForm = (props) => {
                     <Button className={classes.formLoginButtonBtn} variant={'contained'} type={'submit'}>
                         <Typography className={classes.formLoginButtonText}>Login</Typography>
                     </Button>
+                    {isMobile &&
+                        <Link className={classes.createAccountLink} to={"/register"}>
+                            <Button variant={"contained"} className={classes.createAccountButtonBtn}>
+                                <Typography className={classes.createAccountButtonText}>Create Account</Typography>
+                            </Button>
+                        </Link>
+                    }
                 </Box>
                 {/*#endregion*/}
 
