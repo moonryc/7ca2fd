@@ -120,11 +120,9 @@ export const loginSignupStyles = makeStyles((theme) => ({
         flexDirection:'column',
         alignItems:'center',
         marginTop:props => props.isMobile?'0':'86px',
+        zIndex:1
     },
-    formLoginContainer:{
-        // textAlign:'left',
-    },
-    formLoginText:{
+    formWelcomeText:{
         height: '40px',
         fontFamily: 'Open Sans',
         fontStyle: 'normal',
@@ -132,39 +130,40 @@ export const loginSignupStyles = makeStyles((theme) => ({
         fontSize: '26px',
         lineHeight: '40px',
         /* identical to box height, or 154% */
-        color: '#000000',
-        marginBottom:'33px'
+        color: props => props.isMobile? '#FFFFFF':'#000000',
+        marginBottom:'33px',
+        textAlign:props => props.isMobile? 'center':'left',
     },
 
     formInput:{
         position:'relative',
         width:'100%',
         minWidth:'380px',
+        background:props => props.isMobile? 'white':'none',
     },
 
     formInputText:{
         fontFamily: 'Open Sans',
         fontStyle: 'normal',
-        fontWeight: '400',
+        fontWeight: props => props.isMobile ? '700': '400',
         fontSize: '14px',
         lineHeight: '19px',
         /* identical to box height */
-        color: '#B0B0B0',
+        color: props => props.isMobile? '#FFFFFF' : '#B0B0B0',
         marginBottom:'20.18px'
     },
 
-    formInputTextPassword:{
+    formInputTextMarginTop:{
         marginTop:'36px'
     },
 
-    //region password
     formLoginPassForgotText:{
         position:'absolute',
         right:'10px',
         top: 'calc(50% - 14px/2)',
         fontFamily: 'Open Sans',
         fontStyle: 'normal',
-        fontWeight: '600',
+        fontWeight: props => props.isMobile? '700': '600',
         fontSize: '12px',
         lineHeight: '16px',
         textAlign: 'center',
@@ -172,14 +171,12 @@ export const loginSignupStyles = makeStyles((theme) => ({
         cursor:'pointer'
     },
 
-    //#endregion
-
     //#region formButton
 
     formLoginButtonRoot:{
         marginTop:'60px',
         textAlign:'center',
-        background: '#FFFFFF',
+        // background: '#FFFFFF',
 
     },
     formLoginButtonText:{

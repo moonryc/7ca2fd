@@ -1,69 +1,10 @@
 import React, {useEffect} from 'react';
-import {Link, useHistory} from 'react-router-dom';
-import {
-    Box,
-    Typography,
-    Button,
-    FormControl,
-    TextField, useMediaQuery,
-} from '@material-ui/core';
+import {useHistory} from 'react-router-dom';
+import {Box, useMediaQuery,} from '@material-ui/core';
 import {loginSignupStyles} from "./GlobalStyles";
-
-
-const CreateAccount = (props) => {
-    const {isMobile} = props
-    const classes = loginSignupStyles(props)
-    return (
-        <Box className={classes.createAccountRoot}>
-            <Link className={classes.createAccountLink} to="/register">
-                <Button variant={"contained"} className={classes.createAccountButtonBtn}>
-                    <Typography className={classes.createAccountButtonText}>Create Account</Typography>
-                </Button>
-            </Link>
-            {!isMobile && <Typography className={classes.createAccountText}>Don't have an account?</Typography>}
-        </Box>
-    )
-}
-
-const LoginForm = (props) => {
-    const {handleLogin} = props
-    const classes = loginSignupStyles(props)
-    return (
-        <Box component={'form'} onSubmit={handleLogin} className={classes.formLoginRoot}>
-            <Box className={classes.formLoginContainer}>
-                <Typography className={classes.formLoginText}>Welcome back!</Typography>
-
-                {/*#region username*/}
-                <Typography className={classes.formInputText}>Username</Typography>
-                <FormControl required className={classes.formInput}>
-                    <TextField
-                        className={classes.formInput}
-                        aria-label={'username'}
-                        name={'username'} type={'text'}/>
-                </FormControl>
-                {/*#endregion*/}
-
-                {/*region password*/}
-                <Typography className={[classes.formInputText, classes.formInputTextPassword]}>Password</Typography>
-                <FormControl required className={classes.formInput}>
-                    <TextField className={classes.formInput} aria-label={'password'}
-                                name={'password'} type={'password'}/>
-                    <Typography className={classes.formLoginPassForgotText}>Forgot?</Typography>
-                </FormControl>
-                {/*#endregion*/}
-
-                {/*#region Button*/}
-                <Box className={classes.formLoginButtonRoot}>
-                    <Button className={classes.formLoginButtonBtn} variant={'contained'} type={'submit'}>
-                        <Typography className={classes.formLoginButtonText}>Login</Typography>
-                    </Button>
-                </Box>
-                {/*#endregion*/}
-
-            </Box>
-        </Box>
-    )
-}
+import LoginForm from "./components/LoginForm";
+import LoginSignupNav from "./components/LoginSignupNav";
+import SideBanner from "./components/SideBanner";
 
 
 const Login = ({user, login}) => {
@@ -89,26 +30,19 @@ const Login = ({user, login}) => {
     return (
         <Box className={classes.root}>
 
-            {/*#region Side Banner*/}
-            <Box className={classes.sideBannerRoot}>
-                <Box className={classes.sideBannerBg}/>
-                <Box className={classes.sideBannerTextRoot}>
-                    <img alt={''} className={classes.sideBannerTextChat}
-                         src={`${process.env.PUBLIC_URL}/assets/bubble.svg`}/>
-                    <Typography className={classes.sideBannerText}>Converse with anyone with any language</Typography>
-                    {isMobile && <CreateAccount isMobile={isMobile}/>}
-                </Box>
-            </Box>
+            {/*#region Side Banner and mobil view*/}
+            <SideBanner handleLogin={handleLogin} isMobile={isMobile}/>
             {/*#endregion*/}
 
-            <Box sx={{display: 'flex', flexDirection: 'column', width: '-webkit-fill-available'}}>
-                {/*Create Account*/}
-                {!isMobile && <CreateAccount isMobile={isMobile}/>}
-
-                {/*Login Form*/}
-                <LoginForm handleLogin={handleLogin} isMobile={isMobile}/>
-            </Box>
-
+            {!isMobile &&
+                <Box sx={{display: 'flex', flexDirection: 'column', width: '-webkit-fill-available'}}>
+                    {/*Create Account*/}
+                    <LoginSignupNav isMobile={isMobile}/>
+                    {/*<CreateAccount isMobile={isMobile}/>*/}
+                    {/*Login Form*/}
+                    <LoginForm handleLogin={handleLogin} isMobile={isMobile}/>
+                </Box>
+            }
         </Box>
 
     );
