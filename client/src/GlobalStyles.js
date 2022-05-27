@@ -119,12 +119,10 @@ export const loginSignupStyles = makeStyles((theme) => ({
         display:'flex',
         flexDirection:'column',
         alignItems:'center',
-        marginTop:props => props.isMobile?'0':'170px',
-        // marginLeft:props => props.isMobile?'0':'97px',
-        // marginRight:props => props.isMobile?'0':'122px',
+        marginTop:props => props.isMobile?'0':'86px',
     },
     formLoginContainer:{
-        textAlign:'left'
+        // textAlign:'left',
     },
     formLoginText:{
         height: '40px',
@@ -135,6 +133,7 @@ export const loginSignupStyles = makeStyles((theme) => ({
         lineHeight: '40px',
         /* identical to box height, or 154% */
         color: '#000000',
+        marginBottom:'33px'
     },
 
     formInput:{
@@ -151,15 +150,18 @@ export const loginSignupStyles = makeStyles((theme) => ({
         lineHeight: '19px',
         /* identical to box height */
         color: '#B0B0B0',
+        marginBottom:'20.18px'
     },
 
-
+    formInputTextPassword:{
+        marginTop:'36px'
+    },
 
     //region password
     formLoginPassForgotText:{
         position:'absolute',
         right:'10px',
-        top:'50%',
+        top: 'calc(50% - 14px/2)',
         fontFamily: 'Open Sans',
         fontStyle: 'normal',
         fontWeight: '600',
@@ -167,6 +169,7 @@ export const loginSignupStyles = makeStyles((theme) => ({
         lineHeight: '16px',
         textAlign: 'center',
         color: '#3A8DFF',
+        cursor:'pointer'
     },
 
     //#endregion
@@ -174,40 +177,27 @@ export const loginSignupStyles = makeStyles((theme) => ({
     //#region formButton
 
     formLoginButtonRoot:{
-        position: 'absolute',
-        left: '28.95%',
-        right: '28.95%',
-        top: '84.36%',
-        bottom: '0%',
+        marginTop:'60px',
+        textAlign:'center',
         background: '#FFFFFF',
-        boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.35)',
+
     },
     formLoginButtonText:{
-        position: 'absolute',
-        height: '24px',
-        left: '36.25%',
-        right: '36.25%',
-        top: 'calc(50% - 24px/2 + 2px)',
-
+        position:'absolute',
         fontFamily: 'Open Sans',
         fontStyle: 'normal',
         fontWeight: '700',
         fontSize: '16px',
         lineHeight: '24px',
         /* identical to box height, or 150% */
-
-
         color: '#FFFFFF',
     },
     formLoginButtonBtn:{
-        position: 'absolute',
-        left: '0%',
-        right: '0%',
-        top: '0%',
-        bottom: '0%',
-
+        position:'relative',
         background: '#3A8DFF',
         borderRadius: '3px',
+        width:'160px',
+        height:'56px'
     }
 
     //#endregion

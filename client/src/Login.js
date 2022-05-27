@@ -44,7 +44,7 @@ const LoginForm = (props) => {
                 {/*#endregion*/}
 
                 {/*region password*/}
-                <Typography className={classes.formInputText}>Password</Typography>
+                <Typography className={[classes.formInputText, classes.formInputTextPassword]}>Password</Typography>
                 <FormControl required className={classes.formInput}>
                     <TextField className={classes.formInput} aria-label={'password'}
                                 name={'password'} type={'password'}/>
@@ -52,11 +52,14 @@ const LoginForm = (props) => {
                 </FormControl>
                 {/*#endregion*/}
 
-                {/*<Box className={classes.formLoginButtonRoot}>*/}
-                {/*    <Button className={classes.formLoginButtonBtn} variant={'contained'} type={'submit'}>*/}
-                {/*        <Typography className={classes.formLoginButtonText}>Login</Typography>*/}
-                {/*    </Button>*/}
-                {/*</Box>*/}
+                {/*#region Button*/}
+                <Box className={classes.formLoginButtonRoot}>
+                    <Button className={classes.formLoginButtonBtn} variant={'contained'} type={'submit'}>
+                        <Typography className={classes.formLoginButtonText}>Login</Typography>
+                    </Button>
+                </Box>
+                {/*#endregion*/}
+
             </Box>
         </Box>
     )
