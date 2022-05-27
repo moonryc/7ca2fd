@@ -1,24 +1,9 @@
-import React,{useEffect, useState} from 'react';
+import React from 'react';
 import {Box, Typography} from "@material-ui/core";
-import LoginForm from "./LoginForm";
 import {loginSignupStyles} from "../GlobalStyles";
-import LoginSignupNav from "./LoginSignupNav";
-import {useLocation} from "react-router-dom";
-import SignupForm from "./SignupForm";
 
-const SideBanner = (props) => {
-    const {handleLogin, isMobile} = props
+const SideBanner = ({isMobile, children}) => {
     const classes = loginSignupStyles({isMobile})
-    const location = useLocation()
-    const [isLogin, setIsLogin] = useState(false);
-
-    useEffect(() => {
-        if(location.pathname === '/login'){
-            setIsLogin(true)
-        }else if(location.pathname === '/register'){
-            setIsLogin(false)
-        }
-    }, [location]);
 
     return (
         <Box className={classes.sideBannerRoot}>
@@ -27,11 +12,7 @@ const SideBanner = (props) => {
                 <img alt={''} className={classes.sideBannerTextChat}
                      src={`${process.env.PUBLIC_URL}/assets/bubble.svg`}/>
                 {!isMobile && <Typography className={classes.sideBannerText}>Converse with anyone with any language</Typography>}
-                {isMobile && <>
-
-                    {isLogin ? <LoginForm handleLogin={handleLogin} isMobile={isMobile}/>:<SignupForm /> }
-                    <LoginSignupNav isMobile={isMobile}/>
-                </>}
+                {isMobile && children }
             </Box>
         </Box>
     );
