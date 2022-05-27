@@ -137,8 +137,9 @@ export const loginSignupStyles = makeStyles((theme) => ({
 
     formInput:{
         position:'relative',
+        maxWidth:'-webkit-max-content',
         width:'100%',
-        minWidth:'380px',
+        minWidth: props=>props.isMobile?'100%':'380px',
         background:props => props.isMobile? 'white':'none',
     },
 
@@ -174,6 +175,8 @@ export const loginSignupStyles = makeStyles((theme) => ({
     //#region formButton
 
     formLoginButtonRoot:{
+        display: props => props.isMobile? 'flex': 'block',
+        justifyContent:'space-around',
         marginTop:'60px',
         textAlign:'center',
         // background: '#FFFFFF',
