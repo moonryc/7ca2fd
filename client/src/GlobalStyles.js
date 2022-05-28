@@ -30,7 +30,8 @@ export const loginSignupStyles = makeStyles((theme) => ({
     sideBannerTextChat: {
         width: '67px',
         height: '67px',
-        zIndex:1
+        zIndex:1,
+        marginBottom:'39.5px'
     },
     sideBannerText:{
         height: '80px',
@@ -44,7 +45,8 @@ export const loginSignupStyles = makeStyles((theme) => ({
         color: '#FFFFFF',
         zIndex:1,
         paddingLeft:'20px',
-        paddingRight:'20px'
+        paddingRight:'20px',
+        maxWidth:'269px'
     },
     sideBannerBg: {
         position: 'absolute',
@@ -63,16 +65,19 @@ export const loginSignupStyles = makeStyles((theme) => ({
     //#region createAccount
 
     createAccountRoot: {
+        position: 'absolute',
+        right:'42px',
+        top:'30px',
         display:'flex',
         alignItems: props => props.isMobile?'center':'initial',
         width:'-webkit-fill-available',
         height:"fit-content",
         flexDirection:props => props.isMobile ? 'column-reverse':'row-reverse',
-        marginRight: props => props.isMobile ? '0':'42px',
-        marginLeft: props => props.isMobile ? '0':'42px',
+        // marginRight: props => props.isMobile ? '0':'42px',
+        // marginLeft: props => props.isMobile ? '0':'42px',
     },
     createAccountText:{
-        marginTop: props => props.isMobile ? '0':'46px',
+        marginTop: props => props.isMobile ? '0':'16.32px',
         marginRight:props => props.isMobile? '0':'30px',
         height: '19px',
         fontFamily: 'Open Sans',
@@ -87,7 +92,7 @@ export const loginSignupStyles = makeStyles((theme) => ({
 
     createAccountLink:{
         height:'fit-content',
-        background: '#FFFFFF',
+        background: props=>props.isMobile? 'none': '#FFFFFF',
         textDecoration:'none',
     },
     createAccountButtonText:{
@@ -103,12 +108,13 @@ export const loginSignupStyles = makeStyles((theme) => ({
         color: '#3A8DFF',
     },
     createAccountButtonBtn:{
-        marginTop: props => props.isMobile ? '0':'30px',
-        width:'170px',
+        // marginTop: props => props.isMobile ? '0':'30px',
+        width:props => props.isMobile ? '160px': '170px',
         height:'54px',
         background: '#FFFFFF',
         boxShadow: '0px 2px 12px rgba(74, 106, 149, 0.2)',
-        borderRadius: '5px',
+        borderRadius: props => props.isMobile? '3px': '5px',
+
     },
 
     //#endregion
@@ -119,7 +125,8 @@ export const loginSignupStyles = makeStyles((theme) => ({
         display:'flex',
         flexDirection:'column',
         alignItems:'center',
-        marginTop:props => props.isMobile?'0':'86px',
+        maxWidth: props => props.isMobile ? '95vw':'100%',
+        // marginTop:props => props.isMobile?'0':'86px',
         zIndex:1
     },
     formWelcomeText:{
@@ -139,8 +146,10 @@ export const loginSignupStyles = makeStyles((theme) => ({
         position:'relative',
         maxWidth:'-webkit-max-content',
         width:'100%',
-        minWidth: props=>props.isMobile?'100%':'380px',
+        minWidth: props=>props.isMobile?'80vw':'380px',
         background:props => props.isMobile? 'white':'none',
+        padding:props => props.isMobile? '3px' : '0',
+        borderRadius:'5px'
     },
 
     formInputText:{
@@ -176,10 +185,11 @@ export const loginSignupStyles = makeStyles((theme) => ({
 
     formLoginButtonRoot:{
         display: props => props.isMobile? 'flex': 'block',
-        justifyContent:'space-around',
+        flexDirection: 'column',
+        alignItems:'center',
         marginTop:'60px',
         textAlign:'center',
-        // background: '#FFFFFF',
+        gap: props => props.isMobile ? '25px': '0'
 
     },
     formLoginButtonText:{

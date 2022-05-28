@@ -37,7 +37,7 @@ const Login = ({user, login}) => {
             {/*#endregion*/}
 
             {!isMobile &&
-                <Box sx={{display: 'flex', flexDirection: 'column', width: '-webkit-fill-available'}}>
+                <Box sx={{display: 'flex', flexDirection: 'column', width: '-webkit-fill-available',justifyContent:'center'}}>
                     {/*Create Account*/}
                     <LoginSignupNav isMobile={isMobile}/>
                     {/*Login Form*/}

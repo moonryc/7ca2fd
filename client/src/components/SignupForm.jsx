@@ -4,7 +4,7 @@ import {Box, Button, FormControl, TextField, Typography} from "@material-ui/core
 import {Link} from "react-router-dom";
 
 const SignupForm = (props) => {
-    const {handleRegister,isMobile} = props
+    const {handleRegister, isMobile} = props
     const classes = loginSignupStyles(props)
     return (
         <Box component={'form'} onSubmit={handleRegister} className={classes.formLoginRoot}>
@@ -22,20 +22,33 @@ const SignupForm = (props) => {
                 </FormControl>
                 {/*#endregion*/}
 
-                {/*region password*/}
-                <Typography className={`${classes.formInputText} ${classes.formInputTextMarginTop}`}>E-mail address</Typography>
+                {/*region email*/}
+                <Typography className={`${classes.formInputText} ${classes.formInputTextMarginTop}`}>E-mail
+                    address</Typography>
                 <FormControl required className={classes.formInput}>
                     <TextField className={classes.formInput} aria-label={'e-mail address'}
                                name={'email'} type={'email'}/>
                 </FormControl>
                 {/*#endregion*/}
 
-                {/*region confirm password*/}
-                <Typography className={`${classes.formInputText} ${classes.formInputTextMarginTop}`}>Password</Typography>
+                {/*region password*/}
+                <Typography
+                    className={`${classes.formInputText} ${classes.formInputTextMarginTop}`}>Password</Typography>
                 <FormControl required className={classes.formInput}>
                     <TextField className={classes.formInput} aria-label={'password'}
                                name={'password'} type={'password'}
-                                inputProps={{minLength:6}}
+                               inputProps={{minLength: 6}}
+                    />
+                </FormControl>
+                {/*#endregion*/}
+
+                {/*region confirm password*/}
+                <Typography className={`${classes.formInputText} ${classes.formInputTextMarginTop}`}>Confirm
+                    Password</Typography>
+                <FormControl required className={classes.formInput}>
+                    <TextField className={classes.formInput} aria-label={'confirm password'}
+                               name={'confirmPassword'} type={'password'}
+                               inputProps={{minLength: 6}}
                     />
                 </FormControl>
                 {/*#endregion*/}
