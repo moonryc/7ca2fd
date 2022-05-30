@@ -65,6 +65,8 @@ export const loginSignupStyles = makeStyles((theme) => ({
     //#region createAccount
 
     createAccountRoot: {
+        //had to increase z index for cypress clicks because it was throwing an error regarding form covering the button
+        zIndex:2,
         position: 'absolute',
         right:'42px',
         top:'30px',
