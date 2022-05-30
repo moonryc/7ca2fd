@@ -1,10 +1,10 @@
 import React from 'react';
 import {loginSignupStyles} from "../GlobalStyles";
-import {Box, Button, FormControl, TextField, Typography} from "@material-ui/core";
+import {Box, Button, FormControl, FormHelperText, TextField, Typography} from "@material-ui/core";
 import {Link} from "react-router-dom";
 
 const SignupForm = (props) => {
-    const {handleRegister, isMobile} = props
+    const {handleRegister, isMobile, formErrorMessage} = props
     const classes = loginSignupStyles(props)
     return (
         <Box component={'form'} onSubmit={handleRegister} className={classes.formLoginRoot}>
@@ -34,22 +34,28 @@ const SignupForm = (props) => {
                 {/*region password*/}
                 <Typography
                     className={`${classes.formInputText} ${classes.formInputTextMarginTop}`}>Password</Typography>
-                <FormControl required className={classes.formInput}>
+                <FormControl required className={classes.formInput} error={!!formErrorMessage.confirmPassword}>
                     <TextField className={classes.formInput} aria-label={'password'}
                                name={'password'} type={'password'}
                                inputProps={{minLength: 6}}
                     />
+                    <FormHelperText>
+                        {formErrorMessage.confirmPassword}
+                    </FormHelperText>
                 </FormControl>
                 {/*#endregion*/}
 
                 {/*region confirm password*/}
                 <Typography className={`${classes.formInputText} ${classes.formInputTextMarginTop}`}>Confirm
                     Password</Typography>
-                <FormControl required className={classes.formInput}>
+                <FormControl required className={classes.formInput} error={!!formErrorMessage.confirmPassword}>
                     <TextField className={classes.formInput} aria-label={'confirm password'}
                                name={'confirmPassword'} type={'password'}
                                inputProps={{minLength: 6}}
                     />
+                    <FormHelperText>
+                        {formErrorMessage.confirmPassword}
+                    </FormHelperText>
                 </FormControl>
                 {/*#endregion*/}
 
