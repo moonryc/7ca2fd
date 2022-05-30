@@ -1,10 +1,9 @@
 import React, {useEffect, useState} from 'react';
-import {useHistory} from "react-router-dom";
-import {Box, FormHelperText, useMediaQuery} from "@material-ui/core";
+import {Link, useHistory} from "react-router-dom";
+import {Box, Button, Typography, useMediaQuery} from "@material-ui/core";
 import {loginSignupStyles} from "./GlobalStyles";
 import SideBanner from "./components/SideBanner";
 import LoginForm from "./components/LoginForm";
-import LoginSignupNav from "./components/LoginSignupNav";
 import SignupForm from "./components/SignupForm";
 
 const LoginSignup = ({isLogin, user, login, register}) => {
@@ -50,7 +49,7 @@ const LoginSignup = ({isLogin, user, login, register}) => {
 
             {/*#region Side Banner and mobile view*/}
             <SideBanner isMobile={isMobile}>
-                {isLogin ? <LoginForm handleLogin={handleLogin} isMobile={isMobile}/> : <SignupForm handleRegister={handleRegister} isMobile={isMobile}/>}
+                {isLogin ? <LoginForm handleLogin={handleLogin} isMobile={isMobile}/> : <SignupForm formErrorMessage={formErrorMessage} handleRegister={handleRegister} isMobile={isMobile}/>}
             </SideBanner>
             {/*#endregion*/}
 
@@ -61,10 +60,17 @@ const LoginSignup = ({isLogin, user, login, register}) => {
                     width: '-webkit-fill-available',
                     justifyContent: 'center'
                 }}>
-                    {/*Create Account*/}
-                    <LoginSignupNav isMobile={isMobile}/>
+                    {/*Create Account/ Login to Account Nav*/}
+                    <Box className={classes.createAccountRoot}>
+                        <Link className={classes.createAccountLink} to={isLogin? "/register":"/login"}>
+                            <Button variant={"contained"} className={classes.createAccountButtonBtn}>
+                                <Typography className={classes.createAccountButtonText}>{isLogin ? 'Create Account':'Login'}</Typography>
+                            </Button>
+                        </Link>
+                        {!isMobile && <Typography className={classes.createAccountText}>{isLogin ? "Don't have an account?":"Already have an account?"}</Typography>}
+                    </Box>
                     {/*Login/Signup Form*/}
-                    {isLogin ? <LoginForm handleLogin={handleLogin} isMobile={isMobile}/> : <SignupForm handleRegister={handleRegister} isMobile={isMobile}/>}
+                    {isLogin ? <LoginForm handleLogin={handleLogin} isMobile={isMobile}/> : <SignupForm handleRegister={handleRegister} isMobile={isMobile} formErrorMessage={formErrorMessage}/>}
                 </Box>
             }
         </Box>
