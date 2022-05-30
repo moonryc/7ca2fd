@@ -17,7 +17,6 @@ const LoginForm = ({handleLogin, isMobile}) => {
                         className={classes.formInput}
                         aria-label={'username'}
                         name={'username'} type={'text'}
-                        inputProps={{style:{borderRadius:10}}}
                     />
                 </FormControl>
                 {/*#endregion*/}
