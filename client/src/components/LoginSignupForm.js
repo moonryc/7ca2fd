@@ -1,6 +1,6 @@
 import React from 'react';
 import {loginSignupStyles} from "../GlobalStyles";
-import {Box, Button, FormControl, FormHelperText, TextField, Typography, Input} from "@material-ui/core";
+import {Box, Button, FormControl, FormHelperText, TextField, Typography} from "@material-ui/core";
 
 
 const LoginSignupForm = ({isLogin, handleLogin, handleRegister, isMobile, formErrorMessage}) => {
@@ -8,7 +8,7 @@ const LoginSignupForm = ({isLogin, handleLogin, handleRegister, isMobile, formEr
     return (
         <Box component={'form'} onSubmit={isLogin ? handleLogin : handleRegister} className={classes.formLoginRoot}>
             <Box>
-                <Typography className={classes.formWelcomeText}>Create an account.</Typography>
+                <Typography className={classes.formWelcomeText}>{isLogin ? 'Welcome back!':'Create an account.'}</Typography>
 
                 <Box className={classes.formInputsContainer}>
                     {/*#region username*/}
