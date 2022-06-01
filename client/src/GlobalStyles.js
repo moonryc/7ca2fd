@@ -3,56 +3,61 @@ import {makeStyles} from "@material-ui/core/styles";
 export const loginSignupStyles = makeStyles((theme) => ({
     root: {
         position: 'relative',
-        display:'flex',
-        // flexDirection:'column',
+        display: 'flex',
         width: '100vw',
         height: '100vh',
         background: '#FFFFFF'
     },
 
-    //#region sideBanner
+    desktopRoot: {
+        display: props => props.isMobile ? 'none' : 'flex',
+        flexDirection: 'column',
+        width: '-webkit-fill-available',
+        justifyContent: 'space-between',
+        alignContent: 'space-evenly'
+    },
+
 
     sideBannerRoot: {
-        maxWidth:props => props.isMobile ? '100%':'33.33%',
-        width: props => props.isMobile ? '100%':'100%',
-        height:props => props.isMobile ? '100vh':'100%',
-        backgroundSize:'cover',
-        backgroundImage: `url(${process.env.PUBLIC_URL}/assets/bg-img.png)`
+        backgroundSize: 'cover',
+        backgroundImage: `url(${process.env.PUBLIC_URL}/assets/bg-img.png)`,
     },
     sideBannerTextRoot: {
-        display:'flex',
-        flexDirection:'column',
-        justifyContent: props=>props.isMobile? 'space-evenly': 'center',
-        alignItems:'center',
-        width: props => props.isMobile ? '100vw':'auto',
-        height:props => props.isMobile ? '100vh':'100vh',
+        zIndex: 2,
+        gap: props => props.isMobile ? '25px' : 0,
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: props => props.isMobile ? '100vw' : 'auto',
+        height: props => props.isMobile ? '100vh' : '100vh',
     },
     sideBannerTextChat: {
         width: '67px',
         height: '67px',
-        zIndex:1,
-        marginBottom:'39.5px'
+        zIndex: 2,
+        marginBottom: '39.5px'
     },
-    sideBannerText:{
+    sideBannerText: {
+        zIndex: 2,
         height: '80px',
         fontFamily: 'Open Sans',
         fontStyle: 'normal',
         fontWeight: '400',
         fontSize: '26px',
         lineHeight: '40px',
-        /* or 154% */
         textAlign: 'center',
         color: '#FFFFFF',
-        zIndex:1,
-        paddingLeft:'20px',
-        paddingRight:'20px',
-        maxWidth:'269px'
+        // zIndex:1,
+        paddingLeft: '20px',
+        paddingRight: '20px',
+        maxWidth: '269px'
     },
     sideBannerBg: {
         position: 'absolute',
-        maxWidth:props => props.isMobile ? '100%':'33.33%',
-        width: props => props.isMobile ? '100%':'100%',
-        height:props => props.isMobile ? '100vh':'100%',
+        display: "flex",
+        width: props => props.isMobile ? '100vw' : 'calc((5/12)*100vw)',
+        height: '100vh',
         left: '0px',
         top: '0px',
         background: 'linear-gradient(180deg, #3A8DFF 0%, #86B9FF 100%)',
@@ -60,160 +65,145 @@ export const loginSignupStyles = makeStyles((theme) => ({
         opacity: '0.85'
     },
 
-    //#endregion
 
-    //#region createAccount
+    desktopFiller: {
+        height: '84px'
+    },
 
     createAccountRoot: {
         //had to increase z index for cypress clicks because it was throwing an error regarding form covering the button
-        zIndex:2,
-        position: 'absolute',
-        right:'42px',
-        top:'30px',
-        display:'flex',
-        alignItems: props => props.isMobile?'center':'initial',
-        width:'-webkit-fill-available',
-        height:"fit-content",
-        flexDirection:props => props.isMobile ? 'column-reverse':'row-reverse',
-        // marginRight: props => props.isMobile ? '0':'42px',
-        // marginLeft: props => props.isMobile ? '0':'42px',
+        zIndex: 2,
+        gap: props => props.isMobile ? '20px' : 0,
+        marginRight: props => props.isMobile ? 0 : '42px',
+        marginTop: props => props.isMobile ? 0 : '30px',
+        display: 'flex',
+        alignItems: props => props.isMobile ? 'center' : 'initial',
+        width: '-webkit-fill-available',
+        height: "-webkit-fit-content",
+        flexDirection: props => props.isMobile ? 'column-reverse' : 'row-reverse',
     },
-    createAccountText:{
-        marginTop: props => props.isMobile ? '0':'16.32px',
-        marginRight:props => props.isMobile? '0':'30px',
+    createAccountText: {
+        marginTop: props => props.isMobile ? '0' : '16.32px',
+        marginRight: props => props.isMobile ? '0' : '30px',
         height: '19px',
         fontFamily: 'Open Sans',
         fontStyle: 'normal',
         fontWeight: '400',
         fontSize: '14px',
         lineHeight: '19px',
-        /* identical to box height */
         textAlign: 'center',
-        color: '#B0B0B0',
+        color: props => props.isMobile ? '#FFFFFF' : '#B0B0B0',
     },
 
-    createAccountLink:{
-        height:'fit-content',
-        background: props=>props.isMobile? 'none': '#FFFFFF',
-        textDecoration:'none',
+    createAccountLink: {
+        height: 'fit-content',
+        background: props => props.isMobile ? 'none' : '#FFFFFF',
+        textDecoration: 'none',
     },
-    createAccountButtonText:{
+    createAccountButtonText: {
         height: '19px',
         fontFamily: 'Open Sans',
         fontStyle: 'normal',
         fontWeight: '600',
         fontSize: '14px',
         lineHeight: '19px',
-
-        /* identical to box height */
         textAlign: 'center',
         color: '#3A8DFF',
+
     },
-    createAccountButtonBtn:{
-        // marginTop: props => props.isMobile ? '0':'30px',
-        width:props => props.isMobile ? '160px': '170px',
-        height:'54px',
+    createAccountButtonBtn: {
+        width: props => props.isMobile ? '160px' : '170px',
+        height: '54px',
         background: '#FFFFFF',
         boxShadow: '0px 2px 12px rgba(74, 106, 149, 0.2)',
-        borderRadius: props => props.isMobile? '3px': '5px',
+        borderRadius: props => props.isMobile ? '3px' : '5px',
 
     },
 
-    //#endregion
 
-    //#region login form
-
-    formLoginRoot:{
-        display:'flex',
-        flexDirection:'column',
-        alignItems:'center',
-        maxWidth: props => props.isMobile ? '95vw':'100%',
-        // marginTop:props => props.isMobile?'0':'86px',
-        zIndex:1
+    formLoginRoot: {
+        display: 'flex',
+        flexDirection: 'column',
+        marginLeft: props => props.isMobile ? 0 : '97px',
+        maxWidth: props => props.isMobile ? '95vw' : 'fit-content',
+        zIndex: 1
     },
-    formWelcomeText:{
+    formWelcomeText: {
         height: '40px',
         fontFamily: 'Open Sans',
         fontStyle: 'normal',
         fontWeight: '600',
         fontSize: '26px',
         lineHeight: '40px',
-        /* identical to box height, or 154% */
-        color: props => props.isMobile? '#FFFFFF':'#000000',
-        marginBottom:'33px',
-        textAlign:props => props.isMobile? 'center':'left',
+        color: props => props.isMobile ? '#FFFFFF' : '#000000',
+        marginBottom: '33px',
+        textAlign: props => props.isMobile ? 'center' : 'left',
     },
-
-    formInput:{
-        position:'relative',
-        maxWidth:'-webkit-max-content',
-        width:'100%',
-        minWidth: props=>props.isMobile?'80vw':'380px',
-        background:props => props.isMobile? 'white':'none',
-        padding:props => props.isMobile? '3px' : '0',
-        borderRadius:'5px'
+    formInputsContainer: {
+        gap: '38px',
+        display: 'flex',
+        flexDirection: 'column'
     },
-
-    formInputText:{
+    formControl: {
+        borderRadius: props => props.isMobile ? '5px' : '0',
+    },
+    formInput: {
+        borderRadius: props => props.isMobile ? '5px' : '0',
+        position: 'relative',
+        maxWidth: '-webkit-max-content',
+        width: '100%',
+        minWidth: props => props.isMobile ? '80vw' : '380px',
+        background: props => props.isMobile ? 'white' : 'none',
+        padding: props => props.isMobile ? '3px' : '0px',
+    },
+    formInputText: {
         fontFamily: 'Open Sans',
         fontStyle: 'normal',
-        fontWeight: props => props.isMobile ? '700': '400',
+        fontWeight: props => props.isMobile ? '700' : '400',
         fontSize: '14px',
         lineHeight: '19px',
-        /* identical to box height */
-        color: props => props.isMobile? '#FFFFFF' : '#B0B0B0',
-        marginBottom:'20.18px'
+        color: props => props.isMobile ? '#FFFFFF' : '#B0B0B0',
+        marginBottom: '10px'
     },
-
-    formInputTextMarginTop:{
-        marginTop:'36px'
-    },
-
-    formLoginPassForgotText:{
-        position:'absolute',
-        right:'10px',
-        top: 'calc(50% - 14px/2)',
+    formLoginPassForgotText: {
+        position: 'absolute',
+        right: '10px',
+        top: 'calc(65% - 14px/2)',
         fontFamily: 'Open Sans',
         fontStyle: 'normal',
-        fontWeight: props => props.isMobile? '700': '600',
+        fontWeight: props => props.isMobile ? '700' : '600',
         fontSize: '12px',
         lineHeight: '16px',
         textAlign: 'center',
         color: '#3A8DFF',
-        cursor:'pointer'
+        cursor: 'pointer'
     },
 
-    //#region formButton
 
-    formLoginButtonRoot:{
-        display: props => props.isMobile? 'flex': 'block',
+    formLoginButtonRoot: {
+        display: props => props.isMobile ? 'flex' : 'block',
         flexDirection: 'column',
-        alignItems:'center',
-        marginTop:'60px',
-        textAlign:'center',
-        gap: props => props.isMobile ? '25px': '0'
-
+        alignItems: 'center',
+        marginTop: '57px',
+        textAlign: 'center',
+        gap: props => props.isMobile ? '25px' : '0'
     },
-    formLoginButtonText:{
-        position:'absolute',
+    formLoginButtonText: {
+        position: 'absolute',
         fontFamily: 'Open Sans',
         fontStyle: 'normal',
         fontWeight: '700',
         fontSize: '16px',
         lineHeight: '24px',
-        /* identical to box height, or 150% */
         color: '#FFFFFF',
     },
-    formLoginButtonBtn:{
-        position:'relative',
+    formLoginButtonBtn: {
+        position: 'relative',
         background: '#3A8DFF',
         borderRadius: '3px',
-        width:'160px',
-        height:'56px'
+        width: '160px',
+        height: '56px'
     }
 
-    //#endregion
-
-    //#endregion
 
 }))
