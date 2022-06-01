@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from 'react';
-import {Link, useHistory} from "react-router-dom";
-import {Box, Button, Typography, useMediaQuery} from "@material-ui/core";
+import {useHistory} from "react-router-dom";
+import {Box, Grid, useMediaQuery} from "@material-ui/core";
 import {loginSignupStyles} from "./GlobalStyles";
 import SideBanner from "./components/SideBanner";
-import LoginForm from "./components/LoginForm";
-import SignupForm from "./components/SignupForm";
+import LoginSignupForm from "./components/LoginSignupForm";
+import LoginSignupNav from "./components/LoginSignupNav";
 
 const LoginSignup = ({isLogin, user, login, register}) => {
 
@@ -46,33 +46,23 @@ const LoginSignup = ({isLogin, user, login, register}) => {
 
     return (
         <Box className={classes.root}>
-
+            <Grid container>
             {/*#region Side Banner and mobile view*/}
             <SideBanner isMobile={isMobile}>
-                {isLogin ? <LoginForm handleLogin={handleLogin} isMobile={isMobile}/> : <SignupForm formErrorMessage={formErrorMessage} handleRegister={handleRegister} isMobile={isMobile}/>}
+                <LoginSignupForm isLogin={isLogin} isMobile={isMobile} handleLogin={handleLogin} handleRegister={handleRegister}
+                                 formErrorMessage={formErrorMessage}/>
+                        <LoginSignupNav isMobile={isMobile} isLogin={isLogin}/>
             </SideBanner>
             {/*#endregion*/}
 
-            {!isMobile &&
-                <Box sx={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    width: '-webkit-fill-available',
-                    justifyContent: 'center'
-                }}>
-                    {/*Create Account/ Login to Account Nav*/}
-                    <Box className={classes.createAccountRoot}>
-                        <Link className={classes.createAccountLink} to={isLogin? "/register":"/login"}>
-                            <Button variant={"contained"} className={classes.createAccountButtonBtn}>
-                                <Typography className={classes.createAccountButtonText}>{isLogin ? 'Create Account':'Login'}</Typography>
-                            </Button>
-                        </Link>
-                        {!isMobile && <Typography className={classes.createAccountText}>{isLogin ? "Don't have an account?":"Already have an account?"}</Typography>}
-                    </Box>
-                    {/*Login/Signup Form*/}
-                    {isLogin ? <LoginForm handleLogin={handleLogin} isMobile={isMobile}/> : <SignupForm handleRegister={handleRegister} isMobile={isMobile} formErrorMessage={formErrorMessage}/>}
-                </Box>
-            }
+
+            <Grid item className={classes.desktopRoot} sm={7}>
+                <LoginSignupNav isMobile={isMobile} isLogin={isLogin}/>
+                <LoginSignupForm isLogin={isLogin} isMobile={isMobile} handleLogin={handleLogin} handleRegister={handleRegister}
+                                            formErrorMessage={formErrorMessage}/>
+                <Box className={classes.desktopFiller} />
+            </Grid>
+            </Grid>
         </Box>
     )
 };
