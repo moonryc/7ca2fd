@@ -1,6 +1,6 @@
 import {makeStyles} from "@material-ui/core/styles";
 
-export const loginSignupStyles = makeStyles((theme) => ({
+export const authStyles = makeStyles((theme) => ({
     root: {
         position: 'relative',
         display: 'flex',
@@ -14,7 +14,8 @@ export const loginSignupStyles = makeStyles((theme) => ({
         flexDirection: 'column',
         width: '-webkit-fill-available',
         justifyContent: 'space-between',
-        alignContent: 'space-evenly'
+        alignContent: 'space-evenly',
+        alignItems:"center"
     },
 
 
@@ -124,7 +125,6 @@ export const loginSignupStyles = makeStyles((theme) => ({
     formLoginRoot: {
         display: 'flex',
         flexDirection: 'column',
-        marginLeft: props => props.isMobile ? 0 : '97px',
         maxWidth: props => props.isMobile ? '95vw' : 'fit-content',
         zIndex: 1
     },

@@ -1,10 +1,10 @@
 import React from 'react';
-import {loginSignupStyles} from "../GlobalStyles";
+import {authStyles} from "../authStyles";
 import {Box, Button, FormControl, FormHelperText, TextField, Typography} from "@material-ui/core";
 
 
-const LoginSignupForm = ({isLogin, handleLogin, handleRegister, isMobile, formErrorMessage}) => {
-    const classes = loginSignupStyles({isMobile})
+const AuthForm = ({isLogin, handleLogin, handleRegister, isMobile, formErrorMessage}) => {
+    const classes = authStyles({isMobile})
     return (
         <Box component={'form'} onSubmit={isLogin ? handleLogin : handleRegister} className={classes.formLoginRoot}>
             <Box>
@@ -77,4 +77,4 @@ const LoginSignupForm = ({isLogin, handleLogin, handleRegister, isMobile, formEr
     );
 };
 
-export default LoginSignupForm;
+export default AuthForm;

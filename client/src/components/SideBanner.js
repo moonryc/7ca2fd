@@ -1,9 +1,9 @@
 import React from 'react';
 import {Box, Grid, Typography} from "@material-ui/core";
-import {loginSignupStyles} from "../GlobalStyles";
+import {authStyles} from "../authStyles";
 
 const SideBanner = ({isMobile, children}) => {
-    const classes = loginSignupStyles({isMobile})
+    const classes = authStyles({isMobile})
 
     return (
         <Grid item className={classes.sideBannerRoot} xs={12} sm={5}>

@@ -1,16 +1,16 @@
 import React, {useEffect, useState} from 'react';
 import {useHistory} from "react-router-dom";
 import {Box, Grid, useMediaQuery} from "@material-ui/core";
-import {loginSignupStyles} from "./GlobalStyles";
+import {authStyles} from "./authStyles";
 import SideBanner from "./components/SideBanner";
-import LoginSignupForm from "./components/LoginSignupForm";
+import AuthForm from "./components/AuthForm";
 import LoginSignupNav from "./components/LoginSignupNav";
 
 const LoginSignup = ({isLogin, user, login, register}) => {
 
     const history = useHistory();
     const isMobile = useMediaQuery((theme) => theme.breakpoints.down('xs'));
-    const classes = loginSignupStyles({isMobile})
+    const classes = authStyles({isMobile})
     const [formErrorMessage, setFormErrorMessage] = useState({});
 
     const handleLogin = async (event) => {
@@ -49,8 +49,8 @@ const LoginSignup = ({isLogin, user, login, register}) => {
             <Grid container>
             {/*#region Side Banner and mobile view*/}
             <SideBanner isMobile={isMobile}>
-                <LoginSignupForm isLogin={isLogin} isMobile={isMobile} handleLogin={handleLogin} handleRegister={handleRegister}
-                                 formErrorMessage={formErrorMessage}/>
+                <AuthForm isLogin={isLogin} isMobile={isMobile} handleLogin={handleLogin} handleRegister={handleRegister}
+                          formErrorMessage={formErrorMessage}/>
                         <LoginSignupNav isMobile={isMobile} isLogin={isLogin}/>
             </SideBanner>
             {/*#endregion*/}
@@ -58,8 +58,8 @@ const LoginSignup = ({isLogin, user, login, register}) => {
 
             <Grid item className={classes.desktopRoot} sm={7}>
                 <LoginSignupNav isMobile={isMobile} isLogin={isLogin}/>
-                <LoginSignupForm isLogin={isLogin} isMobile={isMobile} handleLogin={handleLogin} handleRegister={handleRegister}
-                                            formErrorMessage={formErrorMessage}/>
+                <AuthForm isLogin={isLogin} isMobile={isMobile} handleLogin={handleLogin} handleRegister={handleRegister}
+                          formErrorMessage={formErrorMessage}/>
                 <Box className={classes.desktopFiller} />
             </Grid>
             </Grid>

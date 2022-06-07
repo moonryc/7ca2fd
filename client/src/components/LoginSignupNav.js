@@ -1,10 +1,10 @@
 import React from 'react';
-import {loginSignupStyles} from "../GlobalStyles";
+import {authStyles} from "../authStyles";
 import {Box, Button, Typography} from "@material-ui/core";
 import {Link} from "react-router-dom";
 
 const LoginSignupNav = ({isMobile, isLogin}) => {
-    const classes = loginSignupStyles({isMobile})
+    const classes = authStyles({isMobile})
 
     return (
         <Box className={classes.createAccountRoot}>
